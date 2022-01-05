@@ -1,13 +1,2 @@
-<script lang="ts">
-	import BlogItem from '$lib/BlogItem.svelte';
-</script>
-
-<svelte:head>
-	<title>William Cheung</title>
-</svelte:head>
-
-<BlogItem />
-<BlogItem />
-
-<style>
-</style>
+<h1>Welcome to SvelteKit</h1>
+<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
