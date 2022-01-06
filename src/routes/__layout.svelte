@@ -1,7 +1,13 @@
 <script>
-	import '../app.css';
+	import Header from '$lib/components/Header.svelte';
+	import '../app.scss';
 </script>
 
-<main>
-	<slot />
-</main>
+<Header>
+	<main>
+		<slot />
+	</main>
+
+	<footer>Hello, I'm the footer.</footer>
+</Header>
+<slot />

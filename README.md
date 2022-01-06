@@ -39,4 +39,7 @@ npm run build
 
 ## Adders
 
+The following adders were used:
 https://github.com/svelte-add/mdsvex
+https://github.com/svelte-add/tailwindcss
+https://github.com/svelte-add/scss
