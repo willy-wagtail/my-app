@@ -2,8 +2,11 @@
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async ({ params, fetch }) => {
+		console.log('params', params);
 		const currentCategory = params.category;
+
 		const response = await fetch('/api/posts.json');
+
 		const posts = await response.json();
 
 		const matchingPosts = posts.filter((post: any) =>

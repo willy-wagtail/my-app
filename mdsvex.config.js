@@ -1,6 +1,10 @@
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+
 const config = {
 	extensions: ['.svelte.md', '.md', '.svx'],
 
+	// https://mdsvex.pngwn.io/docs/#layouts
 	layout: {
 		blog: 'src/routes/blog/_post.svelte'
 	},
@@ -10,7 +14,8 @@ const config = {
 	},
 
 	remarkPlugins: [],
-	rehypePlugins: []
+
+	rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
 };
 
 export default config;
