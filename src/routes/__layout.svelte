@@ -3,7 +3,9 @@
 </script>
 
 <div class="max-w-7xl mx-auto">
-	<header class="sticky px-6 py-4 border-b flex font-medium text-lg">
+	<header
+		class="sticky top-0 backdrop-blur-md bg-white/30 px-6 py-4 border-b flex font-medium text-lg"
+	>
 		<h1 class="text-center">
 			<a
 				href="/"
