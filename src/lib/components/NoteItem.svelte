@@ -1,6 +1,11 @@
 <article class="px-4">
-	<h2 class="mb-4 text-3xl text-slate-900 font-bold">
-		<a class="py-2 hover:text-blue-600 focus:outline-blue-600" href="#"> some article heading </a>
+	<h2 class="mb-4 text-2xl text-slate-900 font-bold">
+		<a
+			class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
+			href="#"
+		>
+			some article heading
+		</a>
 	</h2>
 
 	<p class="mb-5 text-slate-700">
