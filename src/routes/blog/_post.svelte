@@ -36,9 +36,3 @@
 {:else}
 	<p>Else block</p>
 {/if}
-
-<style lang="scss">
-	h1 {
-		background-color: aqua;
-	}
-</style>

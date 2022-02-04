@@ -46,3 +46,5 @@ https://github.com/svelte-add/mdsvex
 https://github.com/svelte-add/tailwindcss
 
 https://github.com/svelte-add/scss
+
+See https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog

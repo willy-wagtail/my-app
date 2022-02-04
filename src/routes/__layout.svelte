@@ -1,31 +1,19 @@
-<script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit';
-
-	export const load: Load = ({ url }) => {
-		const currentRoute = url.pathname;
-
-		return {
-			props: {
-				currentRoute
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
-	import Header from '$lib/components/Header.svelte';
 	import '../app.scss';
-	import { fade } from 'svelte/transition';
-
-	export let currentRoute: string;
+	import Header from '$lib/components/Header.svelte';
 </script>
 
-<Header />
+<div class="max-w-7xl mx-auto">
+	<Header className="px-6 py-4 font-medium flex border-b" />
 
-{#key currentRoute}
-	<main in:fade={{ duration: 2000, delay: 150 }} out:fade={{ duration: 150 }}>
+	<main class="max-w-5xl px-6 mx-auto">
 		<slot />
 	</main>
-{/key}
 
-<footer>Hello, I'm the footer.</footer>
+	<!-- <footer>
+		<ul>
+			<li><a href="about">Notes</a></li>
+			<li><a href="about">About</a></li>
+		</ul>
+	</footer> -->
+</div>
