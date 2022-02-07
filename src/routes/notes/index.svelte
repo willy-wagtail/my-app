@@ -2,7 +2,7 @@
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async (_) => {
-		const allNoteFiles = import.meta.glob('./notes/_notes/*.md');
+		const allNoteFiles = import.meta.glob('./_notes/*.md');
 
 		const iterableNoteFiles = Object.entries(allNoteFiles);
 

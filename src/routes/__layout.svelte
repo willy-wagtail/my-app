@@ -20,7 +20,7 @@
 			<ul class="flex">
 				<li>
 					<a
-						href="/"
+						href="/notes"
 						class="border-b focus:border-b-0 border-blue-600 mr-4 hover:text-blue-600 focus:outline-blue-600"
 					>
 						notes
@@ -29,7 +29,7 @@
 
 				<li>
 					<a
-						href="about"
+						href="/about"
 						class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
 					>
 						about

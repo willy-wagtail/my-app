@@ -1,18 +1,22 @@
+<script lang="ts">
+	import type NoteMetadata from '$lib/types/notes/NoteMetadata';
+
+	export let metadata: NoteMetadata;
+	export let baseUrl: string = '';
+</script>
+
 <article class="px-4">
 	<h2 class="mb-4 text-2xl text-slate-900 font-bold">
 		<a
 			class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
-			href="#"
+			href={baseUrl + '/' + metadata.slug}
 		>
-			some article heading
+			{metadata.title.toLowerCase()}
 		</a>
 	</h2>
 
 	<p class="mb-5 text-slate-700">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-		laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-		voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+		{metadata.description}
 	</p>
 
 	<div class="flex flex-row-reverse justify-end items-center">
@@ -30,7 +34,7 @@
 
 		<a
 			class="border-b focus:border-b-0 border-blue-600 text-slate-700 hover:text-blue-600 focus:outline-blue-600"
-			href="#"
+			href={baseUrl + '/' + metadata.slug}
 		>
 			Read more
 		</a>
