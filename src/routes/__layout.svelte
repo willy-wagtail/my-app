@@ -6,15 +6,15 @@
 	<header
 		class="sticky top-0 backdrop-blur-md bg-white/30 px-6 py-4 border-b flex font-medium text-lg"
 	>
-		<h1 class="text-center">
+		<div class="text-center">
 			<a
 				href="/"
 				class=" text-slate-700 hover:text-blue-600 focus:outline-blue-600"
 				aria-label="Home"
 			>
-				<span aria-hidden="true"> williamcheung </span>
+				<span aria-hidden="true">williamcheung</span>
 			</a>
-		</h1>
+		</div>
 
 		<nav class="ml-auto text-slate-700">
 			<ul class="flex">

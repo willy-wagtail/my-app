@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"@types/luxon": "^2.0.9",
 		"@typescript-eslint/eslint-plugin": "^4.31.1",
 		"@typescript-eslint/parser": "^4.31.1",
 		"autoprefixer": "^10.4.2",
@@ -33,6 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"luxon": "^2.3.0",
 		"rehype-autolink-headings": "^6.1.1",
 		"rehype-slug": "^5.0.1"
 	}
