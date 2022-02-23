@@ -27,14 +27,14 @@
 					</a>
 				</li>
 
-				<li>
+				<!-- <li>
 					<a
 						href="/about"
 						class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
 					>
 						about
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 	</header>

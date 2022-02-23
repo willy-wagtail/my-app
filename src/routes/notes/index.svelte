@@ -41,6 +41,10 @@
 	export let notes: any[];
 </script>
 
+<svelte:head>
+	<title>Notes - William</title>
+</svelte:head>
+
 <header class="py-16 px-4 text-center">
 	<h1 class="text-5xl font-bold mb-5 text-slate-800">my notes</h1>
 
