@@ -49,8 +49,8 @@
 </svelte:head>
 
 <article class="mt-10 pt-10">
-	<header class="mb-16 text-center">
-		<h1 class="text-5xl font-bold text-slate-900 mb-5">{metadata.title}</h1>
+	<header class="xl:mb-16 flex flex-col-reverse xl:flex-col items-center">
+		<h1 class="mt-4 xl:mt-0 mb-5 text-4xl font-bold text-slate-700">{metadata.title}</h1>
 
 		<dl>
 			<dt class="sr-only">Date</dt>
@@ -63,42 +63,44 @@
 		</dl>
 	</header>
 
-	<div class="flex">
-		<aside class="min-w-[200px] mr-8">
-			<a
-				class="group flex font-semibold border-blue-600 text-slate-700 hover:text-blue-600 focus:outline-blue-600"
-				href="/notes"
-			>
-				<svg
-					class="overflow-visible mr-3 text-slate-400 w-auto h-6 group-hover:text-slate-600"
-					viewBox="0 -9 3 24"
+	<div class="xl:flex">
+		<aside class="mb-16 xl:mb-0 xl:mr-8 min-w-[200px]">
+			<div class="hidden xl:block">
+				<a
+					class="group flex font-semibold border-blue-600 text-slate-600 hover:text-blue-600 focus:outline-blue-600"
+					href="/notes"
 				>
-					<path
-						d="M3 0L0 3L3 6"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					/>
-				</svg>
+					<svg
+						class="overflow-visible mr-3 text-slate-400 w-auto h-6 group-hover:text-slate-600"
+						viewBox="0 -9 3 24"
+					>
+						<path
+							d="M3 0L0 3L3 6"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
 
-				Go back to notes
-			</a>
+					Go back to notes
+				</a>
 
-			<hr class="my-5 border-blue-200" />
+				<hr class="mt-4 mb-5 border-blue-200" />
+			</div>
 
 			<dl>
 				<dt class="sr-only">Authors</dt>
 
-				<dd class="flex items-center font-medium mt-6">
+				<dd class="mt-6 flex justify-center xl:justify-start items-center font-medium">
 					<img
 						class="mr-3 w-11 h-11 rounded-full object-cover"
 						src={'/images/people/' + metadata.authorImage}
 						alt=""
 					/>
 
-					<span class="text-slate-900">
+					<span class="text-slate-700">
 						{metadata.author}
 					</span>
 				</dd>

@@ -39,7 +39,7 @@
 		</nav>
 	</header>
 
-	<main class="max-w-5xl px-6 pb-28 mx-auto">
+	<main class="max-w-3xl xl:max-w-5xl px-6 pb-28 mx-auto">
 		<slot />
 	</main>
 </div>

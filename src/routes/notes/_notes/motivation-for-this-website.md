@@ -23,4 +23,4 @@ There is a boundary after which the value of just thinking and researching about
 
 I often find it hard to identify where that boundary is, and find it easy to just continue analysing a given topic even when any extra thinking and researching has diminished value. Progress ends up slow, stress increases, motivation decreases.
 
-To solve this, I've been trying to document what I currently know and what my thought proceses were when a decision is made, and trust that any issues that arise can be solved later.
+To solve this, I've been trying to document what I currently know and what my thought processes were when a decision is made, and trust that any issues that arise can be solved later.

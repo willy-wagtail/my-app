@@ -7,7 +7,7 @@
 </svelte:head>
 
 <article class="pt-16">
-	<h1 class="text-5xl font-bold mb-12 text-slate-800 text-center mb-10">Hi! I'm William.</h1>
+	<h1 class="text-5xl font-bold mb-12 text-slate-700 text-center mb-12">Hi! I'm William.</h1>
 
 	<p class="text-lg text-slate-700 mb-8">
 		I'm a front-end developer and software engineer from Glasgow, Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿.
