@@ -2,6 +2,15 @@
 	import '../app.scss';
 </script>
 
+<svelte:head>
+	<meta property="og:site_name" content="William Cheung" />
+	<meta property="og:locale" content="en_GB" />
+
+	<!-- <meta name="twitter:creator" content="@xxx" />
+	<meta name="twitter:site" content="@xxx" />
+	<meta name="twitter:card" content="summary_large_image" /> -->
+</svelte:head>
+
 <div class="max-w-7xl mx-auto">
 	<header
 		class="sticky top-0 backdrop-blur-md bg-white/30 px-6 py-4 border-b flex font-medium text-lg"
@@ -23,18 +32,9 @@
 						href="/notes"
 						class="border-b focus:border-b-0 border-blue-600 mr-4 hover:text-blue-600 focus:outline-blue-600"
 					>
-						notes
+						Notes
 					</a>
 				</li>
-
-				<!-- <li>
-					<a
-						href="/about"
-						class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
-					>
-						about
-					</a>
-				</li> -->
 			</ul>
 		</nav>
 	</header>

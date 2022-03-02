@@ -9,7 +9,7 @@
 <article class="px-4">
 	<h2 class="mb-4 text-2xl text-slate-900 font-bold">
 		<a
-			class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600 lowercase"
+			class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
 			href={baseUrl + '/' + metadata.slug}
 		>
 			{metadata.title}

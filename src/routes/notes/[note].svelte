@@ -22,6 +22,7 @@
 </script>
 
 <script lang="ts">
+	import RenderNoteMarkdown from '$lib/components/notes/RenderNoteMarkdown.svelte';
 	import type NoteMetadata from '$lib/types/notes/NoteMetadata';
 	import { DateTime } from 'luxon';
 
@@ -29,9 +30,27 @@
 	export let metadata: NoteMetadata;
 </script>
 
+<svelte:head>
+	<title>Note | {metadata.title}</title>
+
+	<meta data-key="description" name="description" content={metadata.description} />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content={metadata.title} />
+	<meta property="og:description" content={metadata.description} />
+
+	<meta name="twitter:title" content={metadata.title} />
+	<meta name="twitter:description" content={metadata.description} />
+
+	<!-- <meta property="og:image" content="https://xxxx.com{imagePath}" />
+	<meta property="og:image:width" content={metadata.coverWidth} />
+	<meta property="og:image:height" content={metadata.coverHeight} />
+	<meta name="twitter:image" content="https://xxx.com{imagePath}" />
+	<meta property="og:url" content="https://xxx.com/notes/{metadata.slug}/" /> -->
+</svelte:head>
+
 <article class="mt-10 pt-10">
 	<header class="mb-16 text-center">
-		<h1 class="text-5xl font-bold text-slate-900 mb-5 lowercase">{metadata.title}</h1>
+		<h1 class="text-5xl font-bold text-slate-900 mb-5">{metadata.title}</h1>
 
 		<dl>
 			<dt class="sr-only">Date</dt>
@@ -86,8 +105,6 @@
 			</dl>
 		</aside>
 
-		<div>
-			<svelte:component this={NoteContent} />
-		</div>
+		<RenderNoteMarkdown {NoteContent} />
 	</div>
 </article>
