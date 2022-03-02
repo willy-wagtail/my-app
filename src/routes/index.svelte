@@ -22,8 +22,8 @@
 
 	<p class="text-lg text-slate-700 mb-8 text-justify">
 		Outwith work, I get easily seduced into rabbit holes in topics of interest to me at that
-		particular time: from garden birds to computer networking and self-hosting applications, from
-		cycling to motorbikes, from mathematics to neural networks, pottery ...
+		particular time: from garden birds and pottery to computer networking and self-hosting
+		applications, from cycling to motorbikes, from mathematics to neural networks ...
 	</p>
 
 	<p class="text-lg text-slate-700">
