@@ -8,15 +8,12 @@
 
 <article class="px-4">
 	<h2 class="mb-4 text-2xl text-slate-700 font-bold">
-		<a
-			class="border-b focus:border-b-0 border-blue-600 hover:text-blue-600 focus:outline-blue-600"
-			href={baseUrl + '/' + metadata.slug}
-		>
+		<a class="app-link" href={baseUrl + '/' + metadata.slug}>
 			{metadata.title}
 		</a>
 	</h2>
 
-	<p class="mb-5 text-slate-700">
+	<p class="mb-5">
 		{metadata.description}
 	</p>
 
@@ -35,11 +32,6 @@
 			<circle cx="1" cy="1" r="1" />
 		</svg>
 
-		<a
-			class="border-b focus:border-b-0 border-blue-600 text-slate-700 hover:text-blue-600 focus:outline-blue-600"
-			href={baseUrl + '/' + metadata.slug}
-		>
-			Read more
-		</a>
+		<a class="app-link" href={baseUrl + '/' + metadata.slug}> Read more </a>
 	</div>
 </article>

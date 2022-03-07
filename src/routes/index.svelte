@@ -9,31 +9,26 @@
 <article class="pt-16">
 	<h1 class="text-5xl font-bold mb-12 text-slate-700 text-center mb-12">Hi! I'm William.</h1>
 
-	<p class="text-lg text-slate-700 mb-8">
-		I'm a front-end developer and software engineer from Glasgow, Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿.
-	</p>
+	<p class="mb-8">I'm a front-end developer and software engineer from Glasgow, Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿.</p>
 
-	<p class="text-lg text-slate-700 mb-8 text-justify">
+	<p class="mb-8 text-justify">
 		I'm currently on a career break after a decade of designing and developing software systems:
 		firstly for Scottish Government where I worked on Disclosure Scotland's criminal record check
 		systems, then JP Morgan Chase where I built order management systems for their banking products.
 		I hold a masters degree in pure mathematics from University of Glasgow.
 	</p>
 
-	<p class="text-lg text-slate-700 mb-8 text-justify">
+	<p class="mb-8 text-justify">
 		Outwith work, I get easily seduced into rabbit holes in topics of interest to me at that
 		particular time: from garden birds and pottery to computer networking and self-hosting
-		applications, from cycling to motorbikes, from mathematics to neural networks ...
+		applications, from cycling to motorbikes ...
 	</p>
 
-	<p class="text-lg text-slate-700">
+	<p>
 		The goal with this website is to make it easy for me to access
-		<a
-			class="border-b border-blue-600 focus:border-b-0 focus:outline-blue-600 hover:text-blue-600 "
-			href="/notes">my notes</a
-		>. I often find myself getting into something with the assumption that I'll remember it all,
-		only to find I've forgotten most of it a few months down the line. (This is also an excuse to
-		try out Svelte and Sveltekit!)
+		<a class="app-link" href="/notes">my notes</a>. I often find myself getting into something with
+		the assumption that I'll remember it all, only to find I've forgotten most of it a few months
+		down the line. (This is also an excuse to try out Svelte and Sveltekit!)
 	</p>
 
 	<img

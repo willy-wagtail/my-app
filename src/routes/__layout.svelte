@@ -16,11 +16,7 @@
 		class="sticky top-0 backdrop-blur-md bg-white/30 px-6 py-4 border-b flex font-medium text-lg"
 	>
 		<div class="text-center">
-			<a
-				href="/"
-				class=" text-slate-700 hover:text-blue-600 focus:outline-blue-600"
-				aria-label="Home"
-			>
+			<a href="/" class=" text-slate-700 app-link border-b-0" aria-label="Home">
 				<span aria-hidden="true">williamcheung</span>
 			</a>
 		</div>
@@ -28,12 +24,7 @@
 		<nav class="ml-auto text-slate-700">
 			<ul class="flex">
 				<li>
-					<a
-						href="/notes"
-						class="border-b focus:border-b-0 border-blue-600 mr-4 hover:text-blue-600 focus:outline-blue-600"
-					>
-						Notes
-					</a>
+					<a href="/notes" class="mr-4 app-link"> Notes </a>
 				</li>
 			</ul>
 		</nav>

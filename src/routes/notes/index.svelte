@@ -48,7 +48,7 @@
 <header class="py-16 px-4 text-center">
 	<h1 class="text-5xl font-bold mb-5 text-slate-700">My Notes</h1>
 
-	<p class="text-lg text-slate-700 mb-5">
+	<p class="mb-5">
 		A collection of notes on various topics of interest to me. These notes are meant to be memos so
 		are loosely-formed and unpolished.
 	</p>
