@@ -22,7 +22,6 @@
 </script>
 
 <script lang="ts">
-	import RenderNoteMarkdown from '$lib/components/notes/RenderNoteMarkdown.svelte';
 	import type NoteMetadata from '$lib/types/notes/NoteMetadata';
 	import { DateTime } from 'luxon';
 
@@ -50,7 +49,9 @@
 
 <article class="mt-10 pt-10">
 	<header class="xl:mb-16 flex flex-col-reverse xl:flex-col items-center">
-		<h1 class="mt-4 xl:mt-0 mb-5 text-4xl font-bold text-slate-700">{metadata.title}</h1>
+		<h1 class="mt-4 xl:mt-0 mb-5 text-4xl font-bold text-slate-700 text-center">
+			{metadata.title}
+		</h1>
 
 		<dl>
 			<dt class="sr-only">Date</dt>
@@ -107,6 +108,8 @@
 			</dl>
 		</aside>
 
-		<RenderNoteMarkdown {NoteContent} />
+		<div class="note-content">
+			<svelte:component this={NoteContent} />
+		</div>
 	</div>
 </article>

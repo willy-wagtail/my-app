@@ -3,3 +3,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tailwind css for mdsvex generated HTML */
+.note-content {
+	> h2 {
+		@apply font-semibold text-lg text-slate-700 mt-12 mb-4;
+	}
+
+	> p {
+		&:not:first-child {
+			@apply mt-5;
+		}
+
+		@apply mb-5 text-slate-700;
+	}
+}

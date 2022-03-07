@@ -5,7 +5,8 @@ const config = {
 		extend: {}
 	},
 
-	plugins: []
+	plugins: [
+	]
 };
 
 module.exports = config;
