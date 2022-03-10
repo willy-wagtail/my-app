@@ -28,8 +28,12 @@ p {
 	}
 
 	> pre {
-		@apply mb-5;
+		@apply mb-5 overflow-auto;
 	}
+
+	// > code {
+	// 	@apply xl:max-w-5xl;
+	// }
 
 	a {
 		@apply app-link;

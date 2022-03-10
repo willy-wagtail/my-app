@@ -49,7 +49,7 @@
 
 <article class="mt-10 pt-10">
 	<header class="xl:mb-16 flex flex-col-reverse xl:flex-col items-center">
-		<h1 class="mt-4 xl:mt-0 mb-5 text-4xl font-bold text-slate-700 text-center">
+		<h1 class="mt-4 xl:mt-0 mb-8 text-3xl md:text-4xl font-bold text-slate-700 text-center">
 			{metadata.title}
 		</h1>
 
