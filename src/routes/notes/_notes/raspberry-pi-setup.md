@@ -7,7 +7,7 @@ slug: raspberry-pi-setup
 title: Setting Up A New Raspberry Pi
 ---
 
-This note presents what I done to set up a fresh Raspberry Pi with the goal of running it headless. I also document some steps to improve the security of the Pi.
+This note presents what I do to set up a fresh Raspberry Pi with the goal of running it headless. I also document some steps to improve the security of the Pi.
 
 ## Setting Up the Pi
 
