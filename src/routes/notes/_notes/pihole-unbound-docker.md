@@ -236,4 +236,4 @@ Devices away from home can browse the internet through your locally hosted Pi-ho
 
 Set up a [OpenVPN](https://docs.pi-hole.net/guides/vpn/openvpn/overview/) or [WireGuard VPN](https://docs.pi-hole.net/guides/vpn/wireguard/overview/) server (perhaps on a Raspberry Pi!) to do this. Also consider looking into [PiVPN](https://www.pivpn.io/) to setup a Wireguard or OpenVPN server.
 
-My ASUS router supports OpenVPN so I managed to set one up running on my router hardware.
+My ASUS router supports OpenVPN so I managed to set one up using the ASUS UI running on my router hardware.
