@@ -13,7 +13,7 @@ This note presents what I do to set up a fresh Raspberry Pi with the goal of run
 
 ### Prepare SD card
 
-On another computer, download and install the [Raspberry Pi Imager](https://www.raspberrypi.org/software/), then use it to install an operating system onto your SD card. We'll use the _Raspberry Pi OS_.
+On another computer, download and install the [Raspberry Pi Imager](https://www.raspberrypi.org/software/), then use it to install an operating system onto your SD card. We'll use the _Raspberry Pi OS_. There is a _Raspberry Pi OS Lite_, which does not have a GUI interface for when you are only running it headless.
 
 After the operating system has been installed onto the SD card, we can make a couple more optional changes before using it to boot up the Raspberry Pi.
 
