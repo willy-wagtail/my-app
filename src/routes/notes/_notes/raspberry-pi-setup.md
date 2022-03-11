@@ -76,7 +76,7 @@ Run the command "`/usr/bin/tvservice -o`" to disable HDMI. Also run "`sudo nano 
 
 To enable again, run "`/usr/bin/tvservice -p`", and remove from the command from `/etc/rc.local`.
 
-## Securing Raspberry Pi
+## Securing the Pi
 
 Some steps to secure your Raspberry Pi and prevent hackers finding and using it can be [found here](https://www.raspberrypi.com/documentation/computers/configuration.html#securing-your-raspberry-pi). The level of security required depends on how exposed to the internet your Pi is.
 
