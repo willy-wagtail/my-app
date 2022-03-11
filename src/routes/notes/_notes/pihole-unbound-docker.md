@@ -9,13 +9,13 @@ title: Network-wide ad-blocker with Pi-hole and Docker Compose
 
 This note explains how to use _Docker Compose_ to setup, stop, and update a _Pi-hole_ local network-wide ad-blocker. This setup also installs an _Unbound_ DNS server on your local network.
 
-I currently have this running on a Raspberry Pi 3b. The setup described in this note can be [found here on GitHub](https://github.com/willy-wagtail/bulbasaur-server/tree/main/pihole-unbound).
+The beauty of using Docker and Docker Compose is that it could be spun up easily with a single command on any machine. I currently have this running on a Raspberry Pi 3b. The setup described in this note can be [found here on GitHub](https://github.com/willy-wagtail/bulbasaur-server/tree/main/pihole-unbound). I have also had this running on an old gaming PC turned home server.
 
 ## Pre-requisites
 
 I run this on a Raspberry Pi 3b+ and I have a separate note on [how I set up a fresh Raspberry Pi](raspberry-pi-setup).
 
-The host should have Docker and Docker compose installed.
+The host should have Docker and Docker Compose installed.
 
 The host should also have Git and Python3 installed for the optional step of running the script to add common false-positives to Pi-hole's whitelist.
 
