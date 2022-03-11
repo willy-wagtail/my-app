@@ -230,7 +230,7 @@ Start the Pi-hole docker container once again, supplying the build flag to force
 
 There are different ways to set it up so that the system will automatically check and perform the updates. But it is so simple with Docker Compose that I prefer to just do it manually.
 
-### Remotely accessing Pi-hole
+## Remotely accessing Pi-hole
 
 Devices away from home can browse the internet through your locally hosted Pi-hole by using a self-hosted VPN server.
 
