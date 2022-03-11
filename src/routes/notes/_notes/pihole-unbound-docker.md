@@ -180,7 +180,7 @@ In the same directory as the _docker-compose.yml_ file, run the following docker
 
 To [test Unbound is working](https://docs.pi-hole.net/guides/dns/unbound/#test-validation), access the bash terminal in the docker container by running "`docker exec -it <container-id> bash`". Once in, run these two commands to test DNSSEC validation: "`dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5335`" and "`dig sigok.verteiltesysteme.net @127.0.0.1 -p 5335`". The first should give a status report of `SERVFAIL` and no IP address. The second should give `NOERROR` plus an IP address.
 
-To confirm Pi-hole is up and pointing to Unbound DNS server, go to the local IP address of the host Raspberry Pi, e.g 192.168.0.2. You should see the Pihole dashboard at `<192.168.0.2>/admin`. Log in using the password set in the environment variable "`PIHOLE_PASSWORD`" in the `.env` file. Go to "_Settings_" and under the "_DNS_" tab, check that it is pointing to "`127.0.0.1#5335`". This is the port we configured the Unbound DNS server to listen to in the Unbound configuration file.
+To confirm Pi-hole is up and pointing to Unbound DNS server, go to the local IP address of the host Raspberry Pi, e.g 192.168.0.2 on your web browser. You should see the Pihole dashboard at `http://<192.168.0.2>/admin`. Log in using the password set in the environment variable "`PIHOLE_PASSWORD`" in the `.env` file. Go to "_Settings_" and under the "_DNS_" tab, check that it is pointing to "`127.0.0.1#5335`". This is the port we configured the Unbound DNS server to listen to in the Unbound configuration file.
 
 ### Add common white-lists
 
@@ -192,7 +192,7 @@ Some hosts which Pi-hole blacklists may actually be legit websites one may wish 
 # sudo python3 ./scripts/whitelist.py --dir ~/.pihole-unbound/etc-pihole/ --docker
 ```
 
-### Configure Your Local Network
+### Configure your local network
 
 Now that Pi-hole is running, we need to configure the internet traffic on your local network to go through Pi-hole.
 
@@ -229,3 +229,11 @@ Start the Pi-hole docker container once again, supplying the build flag to force
 ```
 
 There are different ways to set it up so that the system will automatically check and perform the updates. But it is so simple with Docker Compose that I prefer to just do it manually.
+
+### Remotely accessing Pi-hole
+
+Devices away from home can browse the internet through your locally hosted Pi-hole by using a self-hosted VPN server.
+
+Set up a [OpenVPN](https://docs.pi-hole.net/guides/vpn/openvpn/overview/) or [WireGuard VPN](https://docs.pi-hole.net/guides/vpn/wireguard/overview/) server (perhaps on a Raspberry Pi!) to do this. Also consider looking into [PiVPN](https://www.pivpn.io/) to setup a Wireguard or OpenVPN server.
+
+My ASUS router supports OpenVPN so I managed to set one up running on my router hardware.
