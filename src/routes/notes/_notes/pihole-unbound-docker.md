@@ -9,17 +9,21 @@ title: Network-wide ad-blocker with Pi-hole and Docker Compose
 
 This note explains how to use _Docker Compose_ to setup, stop, and update a _Pi-hole_ local network-wide ad-blocker. This setup also installs an _Unbound_ DNS server on your local network.
 
-I currently have this running on a Raspberry Pi 3b. The setup for that is [found here](https://github.com/willy-wagtail/bulbasaur-server/tree/main/pihole-unbound).
+I currently have this running on a Raspberry Pi 3b. The setup described in this note can be [found here on GitHub](https://github.com/willy-wagtail/bulbasaur-server/tree/main/pihole-unbound).
 
 ## Pre-requisites
 
+I run this on a Raspberry Pi 3b+ and I have a separate note on [how I set up a fresh Raspberry Pi](raspberry-pi-setup).
+
 The host should have Docker and Docker compose installed.
 
-The host should also have Python3 installed for the optional step of running the script to add common false-positives to Pi-hole's whitelist.
+The host should also have Git and Python3 installed for the optional step of running the script to add common false-positives to Pi-hole's whitelist.
 
-## Configuration Files
+## Configuration
 
-Firstly, create a directory in which to host the five configuration files which follows.
+Firstly, create a directory in which to host the five files which follows.
+
+### Dockerfile
 
 Create a file named _Dockerfile_ by running "`sudo nano Dockerfile`" with the contents below. It has instuctions to install Unbound, then copy over the Unbound server configuration file as well as a startup script we will create shortly, before telling Docker to run the script on startup.
 
@@ -32,12 +36,15 @@ RUN chmod +x start_unbound_and_pihole.sh
 ENTRYPOINT ./start_unbound_and_pihole.sh
 ```
 
+### Docker compose file
+
 Create a file named _docker-compose.yml_ by running "`sudo nano docker-compose.yml`" with the following contents:
 
 ```
 version: "3"
 
-# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+# More info at https://github.com/pi-hole/docker-pi-hole/
+# and https://docs.pi-hole.net/
 services:
   pihole-unbound:
     build: .
@@ -67,6 +74,8 @@ services:
     restart: unless-stopped
 ```
 
+### Environment variables
+
 Create the environment variables referenced by the _docker-compose.yml_ file by running "`sudo nano .env`" to create a _.env_ file, and then add the environment variables, as below. You can add _.env_ to your _.gitignore_ file if you are commiting these files to source control so as to not reveal your password and IP address.
 
 ```
@@ -75,27 +84,68 @@ PIHOLE_ServerIP=<local IP Address of host>
 PIHOLE_TIMEZONE=Europe/London
 ```
 
+If you don't supply a Pi-hole password here, a random one will be generated at startup and shown in the system startup logs. This password is used to access the Pi-hole admin dashboard.
+
+### Unbound configuration file
+
 Create the configuration file for Unbound by running "`sudo nano unbound-pihole.conf`" with the following contents:
 
 ```
-# Copied from https://docs.pi-hole.net/guides/unbound
+# Copied from https://docs.pi-hole.net/guides/unbound/ on 23rd Jan 2021.
+
 server:
+    # If no logfile is specified, syslog is used
+    # logfile: "/var/log/unbound/unbound.log"
     verbosity: 0
+
     interface: 127.0.0.1
     port: 5335
     do-ip4: yes
     do-udp: yes
     do-tcp: yes
+
+    # May be set to yes if you have IPv6 connectivity
     do-ip6: no
+
+    # You want to leave this to no unless you have *native* IPv6. With 6to4 and
+    # Terredo tunnels your web browser should favor IPv4 for the same reasons
     prefer-ip6: no
+
+    # Use this only when you downloaded the list of primary root servers!
+    # If you use the default dns-root-data package, unbound will find it
+    # automatically.
+    # root-hints: "/var/lib/unbound/root.hints"
+
+    # Trust glue only if it is within the server's authority
     harden-glue: yes
+
+    # Require DNSSEC data for trust-anchored zones, if such data is absent,
+    # the zone becomes BOGUS
     harden-dnssec-stripped: yes
+
+    # Don't use Capitalization randomization as it known to sometimes
+    # cause DNSSEC issues sometimes
+    # see https://discourse.pi-hole.net/t/unbound-stubby-or-dnscrypt-proxy/9378
     use-caps-for-id: no
+
+    # Reduce EDNS reassembly buffer size.
+    # Suggested by the unbound man page to reduce fragmentation reassembly problems
     edns-buffer-size: 1472
+
+    # Perform prefetching of close to expired message cache entries
+    # This only applies to domains that have been frequently queried
     prefetch: yes
+
+    # One thread should be sufficient, can be increased on beefy machines.
+    # In reality for most users running on small networks or on a single machine,
+    # it should be unnecessary to seek performance enhancement by increasing
+    # num-threads above 1.
     num-threads: 1
+
+    # Ensure kernel buffer is large enough to not lose messages in traffic spikes
     so-rcvbuf: 1m
 
+    # Ensure privacy of local IP ranges
     private-address: 192.168.0.0/16
     private-address: 169.254.0.0/16
     private-address: 172.16.0.0/12
@@ -103,6 +153,8 @@ server:
     private-address: fd00::/8
     private-address: fe80::/10
 ```
+
+### Startup script
 
 Finally, create a script to start Unbound server within the Pi-hole container by running "`sudo nano start_unbound_and_pihole.sh`" with the following contents:
 
@@ -112,15 +164,25 @@ Finally, create a script to start Unbound server within the Pi-hole container by
 /s6-init
 ```
 
-## Startup
+## Starting It Up
 
-With the config files in place from the previous section, we can now build and start pihole-unbound docker container described by the _docker-compose.yml_ file. In the same directory as the _docker-compose.yml_ file, run the following docker commands:
+With the configuration files in place from the previous section, we can now build and start pihole-unbound docker container described by the _docker-compose.yml_ file.
+
+### Startup
+
+In the same directory as the _docker-compose.yml_ file, run the following docker commands:
 
 ```
 # docker-compose up -d
 # docker ps -a  // this is to get the id of the new docker container
 # docker logs <container_id> // this is to check the start-up logs
 ```
+
+To [test Unbound is working](https://docs.pi-hole.net/guides/dns/unbound/#test-validation), access the bash terminal in the docker container by running "`docker exec -it <container-id> bash`". Once in, run these two commands to test DNSSEC validation: "`dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5335`" and "`dig sigok.verteiltesysteme.net @127.0.0.1 -p 5335`". The first should give a status report of `SERVFAIL` and no IP address. The second should give `NOERROR` plus an IP address.
+
+To confirm Pi-hole is up and pointing to Unbound DNS server, go to the local IP address of the host Raspberry Pi, e.g 192.168.0.2. You should see the Pihole dashboard at `<192.168.0.2>/admin`. Log in using the password set in the environment variable "`PIHOLE_PASSWORD`" in the `.env` file. Go to "_Settings_" and under the "_DNS_" tab, check that it is pointing to "`127.0.0.1#5335`". This is the port we configured the Unbound DNS server to listen to in the Unbound configuration file.
+
+### Add common white-lists
 
 Some hosts which Pi-hole blacklists may actually be legit websites one may wish to visit. There is a [curated list on GitHub](https://github.com/anudeepND/whitelist.git) of commonly white-listed websites to remove these false-positives. As an _optional_ step, we can run the following commands to download and run a script that will add these whitelisted domains to Pi-hole.
 
@@ -130,7 +192,7 @@ Some hosts which Pi-hole blacklists may actually be legit websites one may wish 
 # sudo python3 ./scripts/whitelist.py --dir ~/.pihole-unbound/etc-pihole/ --docker
 ```
 
-## Configure Your Local Network
+### Configure Your Local Network
 
 Now that Pi-hole is running, we need to configure the internet traffic on your local network to go through Pi-hole.
 
@@ -138,7 +200,7 @@ On your home network's router, change the default DNS server setting to point to
 
 For example, I have an ASUS router. Instructions on how to do this on an ASUS router can be [found here](https://www.asus.com/support/FAQ/1045253/)
 
-## Verify
+### Verify ad-blocking
 
 Verify that advert blocking works using this [ad-blocker test](https://ads-blocker.com/testing/), or by visiting any website with ads blacklisted by Pi-hole.
 

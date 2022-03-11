@@ -15,11 +15,19 @@ p {
 
 /* Tailwind css for mdsvex generated HTML */
 .note-content {
-	> h2 {
-		@apply font-semibold text-xl text-slate-700 mt-12 mb-4;
+	h2 {
+		@apply font-semibold text-2xl text-blue-800 mt-12 mb-4;
 	}
 
-	> p {
+	h3 {
+		@apply font-semibold text-lg text-slate-700 mt-12 mb-4;
+	}
+
+	a {
+		@apply app-link;
+	}
+
+	p {
 		&:not:first-child {
 			@apply mt-5;
 		}
@@ -27,15 +35,16 @@ p {
 		@apply mb-5 text-slate-700;
 	}
 
-	> pre {
-		@apply mb-5 overflow-auto;
+	ul {
+		@apply mt-5 mb-8 list-disc pl-8;
 	}
 
-	// > code {
-	// 	@apply xl:max-w-5xl;
-	// }
+	li {
+		@apply mb-5;
+	}
 
-	a {
-		@apply app-link;
+	// @see https://www.w3docs.com/snippets/css/how-to-wrap-text-in-a-pre-tag-with-css.html
+	pre {
+		@apply mb-5 overflow-auto whitespace-pre-wrap break-words;
 	}
 }
