@@ -1,7 +1,7 @@
 ---
 author: William Cheung
 authorImage: william.jpg
-date: 2022-03-06
+date: 2022-03-12
 description: This note documents what I do to set up a fresh Raspberry Pi with the goal of running it headless. I also document some steps to improve the security of the Pi.
 slug: raspberry-pi-setup
 title: Setting Up A New Raspberry Pi
@@ -128,11 +128,11 @@ The "`apt clean`" command will free up space by removing the downloaded `.deb` f
 
 ### Automatic package update and upgrade
 
-Check out `unattended-upgrades` with raspberry pi specific config. Not for production because of potential compatibility problems that may arise.
+Set up a cron job to run the `apt update` and `apt upgrade` commands.
 
-Alternatively, set up a cron job to run the update/upgrade commands.
+Alternatively, check out packages like `unattended-upgrades` with Raspberry Pi specific config.
 
-See link to YouTube video above for more details.
+Automatic updates may not be suitable for production because of potential dependency and compatibility issues with any software you are currently running.
 
 ### Kill unnecessary system services
 

@@ -1,23 +1,21 @@
 ---
 author: William Cheung
 authorImage: william.jpg
-date: 2022-03-07
+date: 2022-03-14
 description: This note documents what I did to set up a local network-wide ad-blocker using Pi-hole, with a local Unbound DNS server. Setup is done using docker to make it easy to deploy and upgrade on any machine. I currently have this running on a Raspberry Pi.
 slug: pihole-unbound-docker
 title: Network-wide ad-blocker with Pi-hole and Docker Compose
 ---
 
-This note explains how to use _Docker Compose_ to setup, stop, and update a _Pi-hole_ local network-wide ad-blocker. This setup also installs an _Unbound_ DNS server on your local network.
+This note explains how to use [Docker Compose](https://docs.docker.com/compose/) to setup, stop, and update a [Pi-hole](https://pi-hole.net/) network-wide ad-blocker. This setup also installs an [Unbound](https://docs.pi-hole.net/guides/dns/unbound/) DNS server.
 
-The beauty of using Docker and Docker Compose is that it could be spun up easily with a single command on any machine. I currently have this running on a Raspberry Pi 3b. The setup described in this note can be [found here on GitHub](https://github.com/willy-wagtail/bulbasaur-server/tree/main/pihole-unbound). I have also had this running on an old gaming PC turned home server.
+The beauty of using Docker and Docker Compose is that it could be spun up easily with a single command on any machine. I currently have this running on a [Raspberry Pi 3b+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/). I have also had this running on an old gaming PC turned home server as fallback. The exact setup I use can be [found on GitHub](https://github.com/willy-wagtail/bulbasaur-server/tree/main/pihole-unbound).
 
 ## Pre-requisites
 
-I run this on a Raspberry Pi 3b+ and I have a separate note on [how I set up a fresh Raspberry Pi](raspberry-pi-setup).
+Pi-hole is commonly run on a Raspberry Pi and I have a separate note on [how I set one up](raspberry-pi-setup).
 
-The host should have Docker and Docker Compose installed.
-
-The host should also have Git and Python3 installed for the optional step of running the script to add common false-positives to Pi-hole's whitelist.
+The host should have Docker and Docker Compose installed. Instructions on how to install them on a Raspberry Pi can be found [here](raspberry-pi-docker-docker-compose).
 
 ## Configuration
 
@@ -184,7 +182,7 @@ To confirm Pi-hole is up and pointing to Unbound DNS server, go to the local IP 
 
 ### Add common white-lists
 
-Some hosts which Pi-hole blacklists may actually be legit websites one may wish to visit. There is a [curated list on GitHub](https://github.com/anudeepND/whitelist.git) of commonly white-listed websites to remove these false-positives. As an _optional_ step, we can run the following commands to download and run a script that will add these whitelisted domains to Pi-hole.
+Some hosts which Pi-hole blacklists may actually be legit websites one may wish to visit. There is a [curated list on GitHub](https://github.com/anudeepND/whitelist.git) of commonly white-listed websites to remove these false-positives. As an _optional_ step, we can run the following commands to download and run a Python script that will add these whitelisted domains to Pi-hole.
 
 ```
 # git clone https://github.com/anudeepND/whitelist.git ~/Documents/pihole-whitelist
