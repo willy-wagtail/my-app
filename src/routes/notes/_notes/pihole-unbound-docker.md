@@ -19,11 +19,16 @@ The host should have Docker and Docker Compose installed. Instructions on how to
 
 ## Configuration
 
-Firstly, create a directory in which to host the five files which follows.
+Start by creating a directory in which to host the five files we'll create in the next sections.
+
+```
+# mkdir pihole
+# cd pihole
+```
 
 ### Dockerfile
 
-Create a file named _Dockerfile_ by running "`sudo nano Dockerfile`" with the contents below. It has instuctions to install Unbound, then copy over the Unbound server configuration file as well as a startup script we will create shortly, before telling Docker to run the script on startup.
+Create a file named _Dockerfile_ by running "`sudo nano Dockerfile`" and copy over the contents below. Press `Ctrl-X`, then `Y`, then `Enter` to save and exit the text editor.
 
 ```
 FROM pihole/pihole:latest
@@ -34,9 +39,11 @@ RUN chmod +x start_unbound_and_pihole.sh
 ENTRYPOINT ./start_unbound_and_pihole.sh
 ```
 
+This Dockerfile contains instuctions to install Unbound, then copy over the Unbound server configuration file as well as a startup script we will create shortly, before telling Docker to run the script on startup.
+
 ### Docker compose file
 
-Create a file named _docker-compose.yml_ by running "`sudo nano docker-compose.yml`" with the following contents:
+Similarly, create a file named _docker-compose.yml_ with the contents below.
 
 ```
 version: "3"
@@ -74,7 +81,7 @@ services:
 
 ### Environment variables
 
-Create the environment variables referenced by the _docker-compose.yml_ file by running "`sudo nano .env`" to create a _.env_ file, and then add the environment variables, as below. You can add _.env_ to your _.gitignore_ file if you are commiting these files to source control so as to not reveal your password and IP address.
+Create a _.env_ file for the environment variables referenced by the _docker-compose.yml_ file. Add the environment variables as below.
 
 ```
 PIHOLE_PASSWORD=<password Pihole for web UI>
@@ -84,9 +91,13 @@ PIHOLE_TIMEZONE=Europe/London
 
 If you don't supply a Pi-hole password here, a random one will be generated at startup and shown in the system startup logs. This password is used to access the Pi-hole admin dashboard.
 
+You should add the _.env_ file to your _.gitignore_ file if you are using git and commiting these files to source control so that you do not reveal your password and IP address.
+
+An alternative way to set environment variables is by running "`export PIHOLE_PASSWORD=’<password>’`". This variable can now be accessed like this `${PIHOLE_PASSWORD}`, as in the docker-compose.yml file.
+
 ### Unbound configuration file
 
-Create the configuration file for Unbound by running "`sudo nano unbound-pihole.conf`" with the following contents:
+Create the _unbound-pihole.conf_ file referenced by the Dockerfile with the following contents:
 
 ```
 # Copied from https://docs.pi-hole.net/guides/unbound/ on 23rd Jan 2021.
@@ -154,13 +165,15 @@ server:
 
 ### Startup script
 
-Finally, create a script to start Unbound server within the Pi-hole container by running "`sudo nano start_unbound_and_pihole.sh`" with the following contents:
+Finally, create the _start_unbound_and_pihole.sh_ file referenced in the Dockerfile with the following contents:
 
 ```
 #!/bin/bash -e
 /etc/init.d/unbound start
 /s6-init
 ```
+
+This bash script starts the Unbound server before initialising the Pi-hole image.
 
 ## Starting It Up
 
@@ -176,17 +189,23 @@ In the same directory as the _docker-compose.yml_ file, run the following docker
 # docker logs <container_id> // this is to check the start-up logs
 ```
 
-To [test Unbound is working](https://docs.pi-hole.net/guides/dns/unbound/#test-validation), access the bash terminal in the docker container by running "`docker exec -it <container-id> bash`". Once in, run these two commands to test DNSSEC validation: "`dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5335`" and "`dig sigok.verteiltesysteme.net @127.0.0.1 -p 5335`". The first should give a status report of `SERVFAIL` and no IP address. The second should give `NOERROR` plus an IP address.
+To [test Unbound is working](https://docs.pi-hole.net/guides/dns/unbound/#test-validation), access the bash terminal inside the Docker container, then run two commands to test DNSSEC validation as below. The first should give a status report of `SERVFAIL` and no resulting IP addresses. The second should give `NOERROR` plus an IP address.
 
-To confirm Pi-hole is up and pointing to Unbound DNS server, go to the local IP address of the host Raspberry Pi, e.g 192.168.0.2 on your web browser. You should see the Pihole dashboard at `http://<192.168.0.2>/admin`. Log in using the password set in the environment variable "`PIHOLE_PASSWORD`" in the `.env` file. Go to "_Settings_" and under the "_DNS_" tab, check that it is pointing to "`127.0.0.1#5335`". This is the port we configured the Unbound DNS server to listen to in the Unbound configuration file.
+```
+ # docker exec -it <container-id> bash
+ # dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5335
+ # dig sigok.verteiltesysteme.net @127.0.0.1 -p 5335
+```
+
+To confirm Pi-hole is up and pointing to Unbound DNS server, go to the local IP address of the host Raspberry Pi, e.g 192.168.0.2 on your web browser. You should see the Pihole dashboard at `http://<192.168.0.2>/admin`. Log in using the password set in the environment variable "`PIHOLE_PASSWORD`" in the `.env` file. Go to "Settings" and check under the "DNS\_ tab that it is pointing to "`127.0.0.1#5335`". This is the port we configured the Unbound DNS server to listen to in the Unbound configuration file.
 
 ### Add common white-lists
 
 Some hosts which Pi-hole blacklists may actually be legit websites one may wish to visit. There is a [curated list on GitHub](https://github.com/anudeepND/whitelist.git) of commonly white-listed websites to remove these false-positives. As an _optional_ step, we can run the following commands to download and run a Python script that will add these whitelisted domains to Pi-hole.
 
 ```
-# git clone https://github.com/anudeepND/whitelist.git ~/Documents/pihole-whitelist
-# cd ~/Documents/pihole-whitelist/
+# git clone https://github.com/anudeepND/whitelist.git pihole-whitelist
+# cd pihole-whitelist
 # sudo python3 ./scripts/whitelist.py --dir ~/.pihole-unbound/etc-pihole/ --docker
 ```
 

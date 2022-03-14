@@ -20,7 +20,7 @@ So, with that in mind 😊, run the following:
 # sh get-docker.sh
 ```
 
-(_Do note that it is a [bad idea](https://www.idontplaydarts.com/2016/04/detecting-curl-pipe-bash-server-side/) to pipe `curl/wget` directly into `bash` or `sh`._)
+(_Note that it is a [bad idea](https://www.idontplaydarts.com/2016/04/detecting-curl-pipe-bash-server-side/) to pipe `curl/wget` directly into `bash` or `sh`._)
 
 Next, run the following commands to add your user account to the docker usergroup by running "`sudo gpasswd -a <username> docker`". Logout using the "`logout`" command, then log back in to make sure the group setting is applied. (You can also check that your username is in the right groups using this command "`grep '<username>' /etc/group`" or "`group ${<username>}`.)
 

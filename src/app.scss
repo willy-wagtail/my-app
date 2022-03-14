@@ -47,4 +47,8 @@ p {
 	pre {
 		@apply mb-5 overflow-auto whitespace-pre-wrap break-words;
 	}
+
+	code {
+		@apply text-blue-600;
+	}
 }

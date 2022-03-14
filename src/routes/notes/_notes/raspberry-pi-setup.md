@@ -13,7 +13,7 @@ This note presents what I do to set up a fresh Raspberry Pi with the goal of run
 
 ### Prepare SD card
 
-On another computer, download and install the [Raspberry Pi Imager](https://www.raspberrypi.org/software/), then use it to install an operating system onto your SD card. We'll use the _Raspberry Pi OS_. There is a _Raspberry Pi OS Lite_, which does not have a GUI interface for when you are only running it headless.
+On another computer, download and install the [Raspberry Pi Imager](https://www.raspberrypi.org/software/), then use it to install an operating system onto your SD card. The default OS is Raspberry Pi OS. There is a Raspberry Pi OS Lite which is useful for when you are only running it headless as it does not have a GUI interface.
 
 After the operating system has been installed onto the SD card, we can make a couple more optional changes before using it to boot up the Raspberry Pi.
 
@@ -82,7 +82,7 @@ Some steps to secure your Raspberry Pi and prevent hackers finding and using it 
 
 ### Change password for pi user
 
-The default user "_pi_" has root access and it's default password "_raspberry_" is used for every single Raspberry Pi OS install. The first thing to ever do is change this password.
+The default user "pi" has root access and it's default password "raspberry" is used for every single Raspberry Pi OS install. The first thing to ever do is change this password.
 
 Run "`sudo raspi-config`". Go to “_System Options_”, and then “_Password_”.
 
@@ -98,7 +98,7 @@ Run the following command to add the new user to all the groups. This will give 
 # sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi <account_name>
 ```
 
-Before moving on, make sure to check the new user has been successfully added to the `sudo` group by logging in with it and running, for example, "`sudo whoami`".
+Make sure to check the new user has been successfully added to the `sudo` group by logging in with it and running, for example, "`sudo whoami`".
 
 ### Lock the pi account
 
