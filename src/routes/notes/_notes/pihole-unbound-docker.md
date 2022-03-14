@@ -221,6 +221,14 @@ For example, I have an ASUS router. Instructions on how to do this on an ASUS ro
 
 Verify that advert blocking works using this [ad-blocker test](https://ads-blocker.com/testing/), or by visiting any website with ads blacklisted by Pi-hole.
 
+### Troubleshooting: DNS resolution is currently unavailable
+
+I encountered [this issue](https://discourse.pi-hole.net/t/solved-dns-resolution-is-currently-unavailable/33725) a couple of times. When starting the pihole-unbound docker container, I see in the logs that the "DNS resolution is currently unavailable".
+
+This is solved by `sudo nano /etc/resolv.conf`, and removing `nameserver <host-IP-address>`, leaving your home router's IP address. Or, replace it with `search home` there instead of having your host IP address.
+
+Restart the pihole-unbound container after making the change.
+
 ## Teardown
 
 In the same directory as the _docker-compose.yml_ file, run the following command to stop the Pi-hole docker container:
