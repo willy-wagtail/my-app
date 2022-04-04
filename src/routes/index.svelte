@@ -22,9 +22,8 @@
 
 	<p class="mb-8 text-justify">
 		Outwith work, I get easily seduced into rabbit holes in topics of interest to me at that
-		particular time: from garden birds to pottery, from computer networking to self-hosting
-		applications, from cycling to motorbikes, and the occasional dive into StarCraft 2 and World of
-		Warcraft ...
+		particular time: from garden birds to pottery, from deep learning to self-hosting applications,
+		from cycling to motorbikes, ...
 	</p>
 
 	<p class="mb-8 text-justify">
