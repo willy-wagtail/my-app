@@ -46,7 +46,7 @@ The `Domain` attribute specifies which host can receive a cookie. If specified, 
 
 The `Path` attribute requires a URL path in the request in order to send the cookie. Subdirectories are also matched.
 
-The `SameSite` attribute lets servers specify if and when cookies are sent with cross-site requests. If `Strict`, then the cookie is only sent to the site it originated. If `Lax`, then the cookie is sent when the user navigates to the cookie's origin site. If `None` _and_ `Secure` attribute is set, then cookies are sent on both originating and cross-site requests. The default is `Lax`.
+The `SameSite` attribute lets servers specify if and when cookies are sent with cross-site requests. If `SameSite=Strict`, then the cookie is only sent to the site it originated. If `SameSite=Lax`, then the cookie is sent when the user navigates to the cookie's origin site. If `SameSite=None` _and_ the `Secure` attribute is also present, then cookies are sent on both originating and cross-site requests. The default is `Lax`.
 
 _Note that cookies from the same domain are not considered to be from the same site if sent using a different scheme - i.e. http or https._
 
