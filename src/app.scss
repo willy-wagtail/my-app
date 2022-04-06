@@ -39,6 +39,10 @@ p {
 		@apply mt-5 mb-8 list-disc pl-8 text-lg text-slate-700;
 	}
 
+	ol {
+		@apply mt-5 mb-8 list-decimal pl-8 text-lg text-slate-700;
+	}
+
 	li {
 		@apply mb-5;
 	}
