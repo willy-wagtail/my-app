@@ -21,12 +21,6 @@
 	</p>
 
 	<p class="mb-8 text-justify">
-		Outwith work, I get easily seduced into rabbit holes in topics of interest to me at that
-		particular time: from garden birds to pottery, from deep learning to self-hosting applications,
-		from cycling to motorbikes, ...
-	</p>
-
-	<p class="mb-8 text-justify">
 		The goal with this website is to make it easy for me to access
 		<a class="app-link" href="/notes">my notes</a>. I often find myself getting into something with
 		the assumption that I'll remember it all, only to find I've forgotten most of it a few months
